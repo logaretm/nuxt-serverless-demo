@@ -1,0 +1,34 @@
+org: logaretm
+app: nuxt-test
+# serverless.yml
+
+# The service name
+service: nuxt-test
+
+# provider information
+# we are deploying on aws using the node 10.x runtime.
+provider:
+  name: aws
+  runtime: nodejs10.x
+
+# these are the functions that will run our app.
+# typically you need only one for our use-case.
+# our function is named app
+# the handler is located in lambda.js file exported as "nuxt".
+# our function will handle any HTTP requests to any path, you can change that if you want.
+functions:
+  app:
+    handler: lambda.nuxt
+    events:
+      - http: ANY /
+      - http: ANY /{proxy+}
+
+      # Add those plugins to our service
+plugins:
+  - serverless-offline
+  - serverless-apigw-binary
+
+custom:
+  apigwBinary:
+    types:
+      - "*/*"

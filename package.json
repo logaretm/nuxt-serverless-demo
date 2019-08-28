@@ -1,0 +1,47 @@
+{
+  "name": "serverless-nuxt",
+  "version": "1.0.0",
+  "description": "My finest Nuxt.js project",
+  "author": "Abdelrahman Awad",
+  "private": true,
+  "scripts": {
+    "dev": "nuxt",
+    "build": "nuxt build",
+    "start": "nuxt start",
+    "generate": "nuxt generate",
+    "offline": "NODE_ENV=development serverless offline start --dontPrintOutput",
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore .",
+    "deploy": "yarn build && sls deploy"
+  },
+  "lint-staged": {
+    "*.{js,vue}": "eslint"
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "dependencies": {
+    "@nuxtjs/pwa": "^3.0.0-0",
+    "aws-serverless-express": "^3.3.6",
+    "fastify": "^2.7.1",
+    "fastify-static": "^2.5.0",
+    "nuxt": "^2.0.0",
+    "nuxt-start": "^2.9.1"
+  },
+  "devDependencies": {
+    "@nuxtjs/eslint-config": "^1.0.1",
+    "@nuxtjs/eslint-module": "^1.0.0",
+    "babel-eslint": "^10.0.1",
+    "eslint": "^6.1.0",
+    "eslint-config-prettier": "^4.1.0",
+    "eslint-plugin-nuxt": ">=0.4.2",
+    "eslint-plugin-prettier": "^3.0.1",
+    "husky": "^2.6.0",
+    "lint-staged": "^8.2.1",
+    "prettier": "^1.16.4",
+    "serverless": "^1.50.1",
+    "serverless-apigw-binary": "^0.4.4",
+    "serverless-offline": "^5.10.1"
+  }
+}
